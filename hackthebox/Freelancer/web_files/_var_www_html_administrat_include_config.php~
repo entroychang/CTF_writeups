@@ -1,0 +1,9 @@
+<!-- <?php
+$link = new mysqli("localhost", "root", "_S4_f3_p4As*?S_", "freelancer");
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+?>
+->
