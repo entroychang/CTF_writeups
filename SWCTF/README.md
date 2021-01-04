@@ -17,6 +17,7 @@
         * [Advanced SQL Injection](#Advanced-SQL-Injection)
     * [中科 - Web](#中科---Web)
         * [admin](#admin)
+* [Misc](#Misc)
     * [逢甲 - Misc](#逢甲---Misc)
         * [Real Google](#Real-Google)
 
@@ -268,6 +269,8 @@
     ```
 * 密碼是 `rockyou`
 * flag : `SWCTF{4R3_Y0U_4_R34L_4DM1N?}`
+
+## Misc
 
 ### 逢甲 - Misc
 
