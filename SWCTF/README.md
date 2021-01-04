@@ -1,7 +1,7 @@
 # SWCTF
 
 ## hackmd
-> https://hackmd.io/SECDMdBpS8SN3vuhr_nRIQ#Misc
+> https://hackmd.io/@entroy/SkO-rwl0v
 
 ## Table of Contents
 * [scoreboard](#scoreboard)
