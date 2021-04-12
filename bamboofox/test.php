@@ -12,8 +12,10 @@
 // echo base_convert('file', 36, 10);
 // echo base_convert(723938,10,36).(dechex(23)^sqrt^bindec)
 // file 
-base_convert(727432,10,36);
-echo base_convert("flag", 36,10);
-echo dechex(8);
-// echo (dechex(23)^sqrt^bindec));
+// base_convert(727432,10,36);
+// echo base_convert("flag", 36,10);
+// echo dechex(8);
+// echo (dechex(23)^sqrt^bindec)); 
+// dechex(8)^tanh^floor;
+print('^@^@@@@'^'.(.).&/');
 ?>
