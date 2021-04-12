@@ -1,0 +1,112 @@
+<?php if(!defined('ClassCms')) {exit();}?>
+<!DOCTYPE html>
+<html>
+<head><?php echo(C('this:head','栏目列表')); ?><?php echo(C('cms:head:~','admin')); ?></head>
+<body>
+  
+  <div class="layui-fluid">
+    <div class="layui-row">
+
+        <div class="layui-card">
+            <div class="layui-card-header">
+                <div class="layui-row">
+                    <div id="cms-breadcrumb"><?php echo(C('this:breadcrumb',$breadcrumb)); ?></div>
+                    <div id="cms-right-top-button">
+                        <?php if(P('channel:add')){ ?><a href="?do=admin:channel:add&classhash=<?php echo($classinfo['hash']); ?><?php if($fid){ ?>&fid=<?php echo($fid); ?><?php } ?>" class="layui-btn layui-btn-sm layui-btn-danger"><i class="layui-icon layui-icon-add-1"></i><b>增加栏目</b></a><?php } ?>
+                    </div>
+                </div>
+            </div>
+          
+          <div class="layui-card-body layui-form">
+<?php if(count($channels)){ ?>
+<table class="layui-table" lay-skin="line"  lay-size1="sm">
+         <thead>
+          <tr>
+            <th class="layui-hide-xs">ID</th>
+            <th>栏目名</th>
+            <?php if(P('module:config')){ ?><th class="layui-hide-xs">模型标识</th><?php } ?>
+            <th class="layui-hide-xs">排序</th>
+            <th ></th>
+          </tr> 
+        </thead>
+        <tbody id="channel">
+            <?php foreach($channels as $channel){ ?>
+            <tr rel="<?php echo($channel['id']); ?>" data-name="<?php echo($channel['channelname']); ?>">
+                <td class="layui-hide-xs">
+                    <?php echo($channel['id']); ?>
+                </td>
+                <td>
+                    <?php if(isset($channel['ex'])){ ?><?php echo($channel['ex']); ?><?php } ?>
+                    <a href="?do=admin:article:home&cid=<?php echo($channel['id']); ?>"><span<?php if($channel['enabled']==0){ ?> class="cms-text-disabled"<?php } ?>><?php echo($channel['channelname']); ?></span></a>
+                </td>
+                <?php if(P('module:config')){ ?>
+                    <td class="layui-hide-xs">
+                        <a href="?do=admin:channel:jumpModule&id=<?php echo($channel['id']); ?>"><?php echo($channel['modulehash']); ?></a>
+                    </td>
+                <?php } ?>
+                <td class="layui-hide-xs">
+                    <?php echo($channel['channelorder']); ?>
+                </td>
+                <td class="btn">
+                    <a class="layui-btn layui-btn-sm  layui-btn-primary<?php if($channel['enabled']==0){ ?> layui-btn-disabled<?php } ?>"<?php if($channel['enabled']){ ?> target="_blank" href="?do=admin:channel:jump&id=<?php echo($channel['id']); ?>"<?php } ?>>访问</a>
+                    <?php if($showpage){ ?><a class="layui-btn layui-btn-sm  layui-btn-primary" href="?do=admin:channel:index&classhash=<?php echo($classinfo['hash']); ?>&id=<?php echo($channel['id']); ?>">栏目</a><?php } ?>
+                    <a class="layui-btn layui-btn-sm  layui-btn-primary" href="?do=admin:article:home&cid=<?php echo($channel['id']); ?>">管理</a>
+                    <?php if(P('channel:edit')){ ?><a class="layui-btn layui-btn-sm layui-btn-primary" href="?do=admin:channel:edit&id=<?php echo($channel['id']); ?>">修改</a><?php } ?>
+                    <?php if(P('channel:del')){ ?><a class="layui-btn layui-btn-sm layui-btn-primary channeldel">删除</a><?php } ?>
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+</table>
+<?php }else{ ?>
+    <blockquote class="layui-elem-quote layui-text">
+    <?php if($fid){ ?>
+        尚未增加子栏目
+    <?php }else{ ?>
+        <?php echo($classinfo['classname']); ?>[<?php echo($classinfo['hash']); ?>] 尚未增加栏目
+    <?php } ?>
+    </blockquote>
+<?php } ?>
+<div class="layui-row">
+    <div id="cms-left-bottom-button" class="layui-btn-container">
+    </div>
+    <div id="cms-right-bottom-button" class="layui-btn-container">
+        <?php if(count($channels) && $showpage){ ?><?php echo(C('this:pagelist')); ?><?php } ?>
+    </div>
+</div>
+
+<?php if(count($channels) && $showpage){ ?>
+    <blockquote class="layui-elem-quote layui-text">
+        栏目数量较多,已关闭树状显示栏目列表
+    </blockquote>
+<?php } ?>
+
+    <script>
+    layui.use(['index','form','sortable'],function(){
+        layui.$('.channeldel').click(function(){
+            delid=layui.$(this).parents('tr').attr('rel');
+            layui.layer.confirm('是否删除栏目:'+layui.$(this).parents('tr').attr('data-name')+'<br>注意:栏目文章与栏目变量也将被删除!', {
+              btn: ['删除','取消'],skin:'layer-danger',title:'请确认',shadeClose:1}, function(){
+                layui.admin.req({type:'post',url:"?do=admin:channel:del",data:{ id: delid},async:true,beforeSend:function(){
+                    layui.admin.load('删除中...');
+                },done: function(res){
+                    if (res.error==0)
+                    {
+                        layui.layer.msg(res.msg);
+                        layui.$('tr[rel='+delid+']').remove();
+                    }
+                }});
+            });
+        });
+    });
+    </script>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+<?php echo(C('this:body:~')); ?>
+<?php echo(C('cms:body:~','admin')); ?></body>
+</html>
