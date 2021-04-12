@@ -1,0 +1,102 @@
+<?php if(!defined('ClassCms')) {exit();}?>
+<!DOCTYPE html>
+<html>
+<head><?php echo(C('this:head',$title)); ?><?php echo(C('cms:head:~','admin')); ?></head>
+<body>
+  
+  <div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-card">
+            <div class="layui-card-header">
+                <div class="layui-row">
+                    <div id="cms-breadcrumb"><?php echo(C('this:breadcrumb',$breadcrumb)); ?></div>
+                    <div id="cms-right-top-button">
+                        <?php if(P('module:add')){ ?><a href="?do=admin:module:add&classhash=<?php echo($classhash); ?>" class="layui-btn layui-btn-sm layui-btn-danger"><i class="layui-icon layui-icon-add-1"></i><b>增加模型</b></a><?php } ?>
+                    </div>
+                </div>
+            </div>
+
+
+          <div class="layui-card-body layui-form">
+<?php if((count($modulelist))){ ?>
+
+ <table class="layui-table" lay-skin="line" >
+            <colgroup>
+              <col>
+              <col>
+              <col>
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th>模型名</th>
+                <th class="layui-hide-xs">模型标识</th>
+                <th ></th>
+              </tr> 
+            </thead>
+            <tbody id="modules">
+<?php foreach($modulelist as $module){ ?>
+<tr rel="<?php echo($module['id']); ?>">
+<td>
+<i class="layui-icon layui-icon-find-fill sortable-color"></i>
+<?php if(P('module:edit')){ ?><a href="?do=admin:module:config&id=<?php echo($module['id']); ?>"><?php } ?>
+<span<?php if($module['enabled']==0){ ?> class="cms-text-disabled"<?php } ?>><?php echo($module['modulename']); ?></span>
+<?php if(P('module:edit')){ ?></a><?php } ?>
+</td>
+<td class="layui-hide-xs">
+<?php echo($module['hash']); ?>
+</td>
+
+<td class="btn">
+        <?php if(P('route:index')){ ?><a class="layui-btn layui-btn-sm layui-btn-primary" href="?do=admin:route:index&id=<?php echo($module['id']); ?>">页面</a><?php } ?>
+        <?php if(P('var:index')){ ?><a class="layui-btn layui-btn-sm layui-btn-primary" href="?do=admin:var:index&id=<?php echo($module['id']); ?>">变量</a><?php } ?>
+        <?php if(P('column:index')){ ?><a class="layui-btn layui-btn-sm layui-btn-primary" href="?do=admin:column:index&id=<?php echo($module['id']); ?>">字段</a><?php } ?>
+        <?php if(P('module:edit')){ ?><a class="layui-btn layui-btn-sm layui-btn-primary" href="?do=admin:module:config&id=<?php echo($module['id']); ?>">管理</a><?php } ?>
+</td>
+</tr>
+<?php } ?>
+            </tbody>
+          </table>
+
+<div class="layui-row">
+    <div id="cms-left-bottom-button" class="layui-btn-container"></div>
+    <div id="cms-right-bottom-button" class="layui-btn-container"></div>
+</div>
+
+<script>
+layui.use(['index','sortable'],function(){
+
+new Sortable(modules, {
+        handle: '.layui-icon',
+        onSort: function (evt) {
+            modulesarray='';
+            layui.$('#modules tr').each(function(){
+                modulesarray=modulesarray+'|'+layui.$(this).attr('rel');
+            });
+            layui.admin.req({type:'post',url:"?do=admin:module:order",data:{ modulesarray: modulesarray,classhash:'<?php echo($classhash); ?>'},async:true,beforeSend:function(){
+                layui.admin.load('修改排序中...');
+            },done: function(res){
+                
+            }});
+        }
+    });
+
+});
+</script>
+<?php }else{ ?>
+<blockquote class="layui-elem-quote layui-text">
+    <?php echo($classname); ?>[<?php echo($classhash); ?>] 尚未增加模型
+</blockquote>
+
+<?php } ?>
+
+          </div>
+
+        </div>
+      
+    </div>
+  </div>
+
+<?php echo(C('this:body:~')); ?>
+<?php echo(C('cms:body:~','admin')); ?></body>
+</html>
