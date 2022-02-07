@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+    app:
+        build:
+            context: './app' 
+        volumes:
+            - docker-certs-client:/certs/client:ro
+        environment:
+            - DOCKER_TLS_CERTDIR=/certs
+        depends_on:
+            - dind
+        networks:
+            backbone:
+        ports:
+            - "7414:7414/tcp"
+    dind:
+        image: docker:dind
+        volumes:
+            - docker-certs-ca:/certs/ca
+            - docker-certs-client:/certs/client
+        environment:
+            - DOCKER_TLS_CERTDIR=/certs
+        privileged: true
+        networks:
+            backbone:
+                aliases:
+                    - docker
+networks:
+    backbone:
+volumes:
+    docker-certs-client:
+    docker-certs-ca:

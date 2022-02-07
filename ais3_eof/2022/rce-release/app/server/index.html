@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Remote Clang Execution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Custom CSS */
+body {
+  font-family: sans-serif;
+}
+h2 {
+  font-weight: 700;
+  font-size: 2rem;
+}
+#banner {
+  background-image: url("https://www.llvm.org/img/LLVMWyvernSmall.png");
+  background-repeat: no-repeat;
+  background-position: 50% -5%;
+  height: 300px;
+  background-color: #3f3f3f;
+}
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 3rem;
+  color: #fff;
+  height: calc(100% - 20px);
+  background-image: linear-gradient(0deg, #00000045, #ffffff40);
+  padding-bottom: 20px;
+  font-weight: 900;
+}
+.container {
+  margin: 60px 10%;
+}
+form {
+  font-size: 1.2em;
+  padding-top: 10px;
+}
+pre {
+  background-color: #ddd;
+  padding: 5px 15px;
+  margin: 10px 0;
+  font-family: monospace;
+  line-height: 125%;
+}
+    </style>
+  </head>
+  <body>
+  <div id="banner">
+    <div id="title">Remote Clang Execution</div>
+  </div>
+  <div id="content">
+    <div class="container">
+      <h2>Environment</h2>
+      <pre>$ clang --version
+Alpine clang version 12.0.1
+Target: x86_64-alpine-linux-musl
+Thread model: posix
+InstalledDir: /usr/bin</pre>
+      <h2>Execution</h2>
+      <pre>$ clang [file]
+$ ./a.out</pre>
+      <h2>Upload</h2>
+      <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".c"/>
+        <hr/>
+        <input type="submit" value="Upload!"/>
+      </form>
+    </div>
+  </div> 
+  </body>
+</html>

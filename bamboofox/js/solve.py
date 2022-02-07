@@ -1,0 +1,9 @@
+string = '''\x48\x4a\x45\x45\x41\x40\x46\x3e\x4a\x68\x62\x6d\x2e\x57\x70\x2a\x54\x5d\x43\x69\x2a\x51\x25\x57\x26\x65\x21\x1f\x48\x5a'''
+
+flag = ''
+for i in range(0, len(string)):
+    print(ord(string[i]) + i + 10)
+    flag += chr(ord(string[i]) + 10 + i)
+
+print(flag)
+print(len(flag))

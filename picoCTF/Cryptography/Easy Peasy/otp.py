@@ -44,6 +44,9 @@ def encrypt(key_location):
 
 	return key_location
 
+def decrypt():
+	
+
 
 print("******************Welcome to our OTP implementation!******************")
 c = startup(0)

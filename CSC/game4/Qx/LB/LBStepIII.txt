@@ -1,0 +1,7 @@
+館長拿出64塊錢買了一顆出奇蛋，蛋裡有張字條，幫館長找出要用什麼「工具」復健練了16年的拳頭?
+
+Flag:a0d720eaaab9d3af11f2694bee358bf90e39cb6cb79e3058ad1a09abbe395019
+AES key:Ready Player One
+AES128(Mode:CBC,Text:H16,Padding:zeropadding, IV=AES key)
+
+請依此KEY解開RT壓縮檔，並進行下一步
