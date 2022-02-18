@@ -1,5 +1,8 @@
 # DEVCORE HITCON Wargame
 
+## 我有架起來在 CTFd 上面，如果有興趣的可以玩玩看
+> p.s. 我有藏第七個 flag ～
+> https://entroy.tk/
 
 ## Rank
 ![](https://i.imgur.com/7YAgIW7.png)
