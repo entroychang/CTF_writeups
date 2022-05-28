@@ -430,7 +430,6 @@ $a = new SessionManager($redis, "whatever", "whatever", "system"); // <- here
 
 #### Solution
 ```python=
-from urllib import response
 import requests
 
 def payloadGenerator(command):
